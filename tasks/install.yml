@@ -1,0 +1,8 @@
+---
+- name: Install borg backup packages
+  package:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - borgbackup
+    - borgbackup-doc

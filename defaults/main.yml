@@ -1,2 +1,10 @@
 ---
-# defaults file for borg-backup
+borg_host: localhost
+borg_port: 22
+borg_user: backup
+borg_repo: backuprepo
+borg_script: /root/backup.sh
+borg_auth_users:
+  host: backupclient
+  ssh_privkey: /root/.ssh/backup_id_rsa
+  passphrase: INSECURE_PASSPHRASE

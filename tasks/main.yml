@@ -1,2 +1,12 @@
 ---
-# tasks file for borg-backup
+- import_tasks: install.yml
+  tags: borg-install
+
+- import_tasks: ssh.yml
+  tags: borg-ssh
+
+- import_tasks: repo.yml
+  tags: borg-repo
+
+- import_tasks: script.yml
+  tags: borg-script

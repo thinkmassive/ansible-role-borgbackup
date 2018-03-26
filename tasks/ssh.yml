@@ -1,0 +1,18 @@
+---
+- name: Copy SSH keys
+  copy:
+    content: "{{ vault.ssh_private_keys[inventory_hostname] }}"
+    dest: "{{ borg_ssh_privkey }}"
+    owner: root
+    group: root
+    mode: 0400
+
+- name: Obtain SSH hostkey of backup repo
+  shell: ssh-keyscan -H {{ borg_repo }}
+  register: borg_repo_hostkey
+
+- name: Trust SSH hostkeys of backup repo
+  lineinfile:
+    path: ~/.ssh/known_hosts
+    line: "{{ item }}"
+  with_items: borg_repo_hostkey.stdout_lines

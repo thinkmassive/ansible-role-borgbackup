@@ -1,0 +1,6 @@
+---
+- name: Initialize backup repo
+  shell: borg init {{ borg_repo }}
+  environment:
+    BORG_PASSPHRASE: "{{ borg_passphrase }}"
+    BORG_RSH: "ssh -i {{ borg_privkey_path }}"

@@ -1,0 +1,12 @@
+---
+- name: Install backup script
+  template:
+    src: backup.sh.j2
+    dest: "{{ borg_script }}"
+
+- name: Set backup script permissions
+  file:
+    path: "{{ borg_script }}"
+    owner: root
+    group: root
+    mode: 0700
